@@ -1,0 +1,66 @@
+import random
+ 
+ 
+def playing():
+    print()
+    word_list = ['python', 'java', 'kotlin', 'javascript']
+    word = random.choice(word_list)
+ 
+    hint = len(word)* '-'
+    attempts = 8
+    counter= = 0
+    alr_typ = set()
+    temp_hint = list(hint)
+    temp_list = list(word)
+ 
+    while attempts > 0:
+        if counter == len(word):
+            break
+ 
+        print(hint)
+        letter = input("Input a letter: ")
+ 
+        if letter == "" or len(letter) > 1:
+            print("You should input a single letter")
+        elif letter.islower() is False:
+            print("It is not an ASCII lowercase letter")
+        elif letter in alr_typ:
+            print("You already typed this letter")
+        elif letter in word:
+            for n in range(len(word)):
+                if letter == temp_list[n]:
+                    temp_hint[n] = letter
+                    counter += 1
+                    hint = "".join(temp_hint)
+            alr_typ.add(letter)
+        else:
+            print("No such letter in the word")
+            attempts -= 1
+            if attempts == 0:
+                break
+            alr_typ.add(letter)
+        print("")
+ 
+    if attempts == 0:
+        print("You are hanged!")
+        print()
+    else:
+        print(word)
+        print("You guessed the word!")
+        print("You survived!")
+        print()
+ 
+ 
+def wanna_play():
+    answer = input('Type "play" to play the game, "exit" to quit: ')
+    while answer != "exit" and answer != "play":
+        answer = input('Type "play" to play the game, "exit" to quit: ')
+    if answer == "exit":
+        return
+    elif answer == "play":
+        playing()
+        want_play()
+ 
+ 
+print("H A N G M A N")
+wanna_play()
