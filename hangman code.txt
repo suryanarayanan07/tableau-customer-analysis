@@ -59,7 +59,7 @@ def wanna_play():
         return
     elif answer == "play":
         playing()
-        want_play()
+        wanna_play()
  
  
 print("H A N G M A N")
